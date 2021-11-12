@@ -1,0 +1,51 @@
+{
+    "name": "moirei/settings",
+    "description": "A simple solution for application settings.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Augustus",
+            "email": "augustusokoye@moirei.com"
+        }
+    ],
+    "keywords":[
+        "MOIREI",
+        "Laravel",
+        "settings",
+        "model settings",
+        "user settings"
+    ],
+    "scripts": {
+        "test": "./vendor/bin/pest"
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8.0",
+        "illuminate/contracts": "^8.0",
+        "laravel/helpers": "^1.4",
+        "moirei/fields": "^1.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.20",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^6.21",
+        "illuminate/database": "^8.65"
+    },
+    "autoload": {
+        "psr-4": {
+            "MOIREI\\Settings\\": "src",
+            "MOIREI\\Settings\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MOIREI\\Settings\\SettingsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
