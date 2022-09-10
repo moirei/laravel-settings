@@ -84,6 +84,47 @@ expect($user->settings())->toBeCollection();
 expect($user->settings('notifications.enable'))->toBeBool();
 ```
 
+## Reusable settings
+
+You can reusable settings
+
+```php
+class UserSettings extends Settings
+{
+    /**
+     * @inheritdoc
+     */
+    public function fields(): array
+    {
+        return [
+            'notifications.enable' => Boolean::make('Enable notification')->default(false)
+        ];
+    }
+}
+```
+
+Update in config
+
+```php
+// config/settings.php
+'groups' => [
+   'users' => \App\Settings\UserSettings::class,
+],
+```
+
+Now your model can be pointed to the config.
+
+```php
+class User extends Model{
+    use HasSettings;
+    
+    // optional if lower-cased pluralised form of class name matches name in groups
+    protected $settingsConfig = 'users';
+}
+```
+
+
+
 ## Tests
 ```bash
 composer test

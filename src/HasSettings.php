@@ -39,7 +39,7 @@ trait HasSettings
             $settings = Str::plural(strtolower($name));
         }
 
-        return config('settings.defaults.' . $settings, []);
+        return Helpers::getSettingsFields(config('settings.groups.' . $settings));
     }
 
     /**
@@ -59,6 +59,7 @@ trait HasSettings
             return $value;
         }
 
+        /** @var Field $config */
         if (!$default && $config = Arr::get($this->settingsConfig(), $key)) {
             $default = $config->getDefault();
         }

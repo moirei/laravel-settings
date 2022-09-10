@@ -11,6 +11,7 @@ class AsSettingsCollection implements CastsAttributes
     {
         $defaults = [];
         if (method_exists($model, 'settingsConfig')) {
+            /** @var \MOIREI\Fields\Inputs\Field $config */
             foreach ($model->settingsConfig($key) as $k => $config) {
                 Arr::set($defaults, $k, $config->getDefault());
             }

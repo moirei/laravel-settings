@@ -25,4 +25,21 @@ class Helpers
 
         return $merged;
     }
+
+    /**
+     * Get the settings fields from a settings class.
+     *
+     * @param string $settings
+     * @return array<string, \MOIREI\Fields\Inputs\Field>
+     */
+    static function getSettingsFields($settings): array
+    {
+        if (class_exists($settings)) {
+            /** @var Settings $instance */
+            $instance = app($settings);
+            return $instance->fields();
+        }
+
+        return [];
+    }
 }
